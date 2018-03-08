@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Controller</title>
+
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		body {
+			background: linear-gradient(325deg, rgb(138, 138, 138) 0, rgb(255, 255, 255) 100%)
+		}
+
+		#motor-power {
+			text-align: center
+		}
+
+		input[type=range] {
+			-webkit-appearance: none;
+			margin: 18px 0;
+			width: 100%;
+		}
+
+		input[type=range]:focus {
+			outline: none;
+		}
+
+		input[type=range]::-webkit-slider-runnable-track {
+			width: 100%;
+			height: 8.4px;
+			cursor: pointer;
+			animation-duration: 0.2s;
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+			background: #3071a9;
+			border-radius: 1.3px;
+			border: 0.2px solid #010101;
+		}
+
+		input[type=range]::-webkit-slider-thumb {
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+			border: 1px solid #000000;
+			height: 36px;
+			width: 16px;
+			border-radius: 3px;
+			background: #ffffff;
+			cursor: pointer;
+			-webkit-appearance: none;
+			margin-top: -14px;
+		}
+
+		input[type=range]:focus::-webkit-slider-runnable-track {
+			background: #367ebd;
+		}
+
+		input[type=range]::-moz-range-track {
+			width: 100%;
+			height: 8.4px;
+			cursor: pointer;
+			animation-duration: 0.2s;
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+			background: #3071a9;
+			border-radius: 1.3px;
+			border: 0.2px solid #010101;
+		}
+
+		input[type=range]::-moz-range-thumb {
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+			border: 1px solid #000000;
+			height: 36px;
+			width: 16px;
+			border-radius: 3px;
+			background: #ffffff;
+			cursor: pointer;
+		}
+
+		input[type=range]::-ms-track {
+			width: 100%;
+			height: 8.4px;
+			cursor: pointer;
+			animation-duration: 0.2s;
+			background: transparent;
+			border-color: transparent;
+			border-width: 16px 0;
+			color: transparent;
+		}
+
+		input[type=range]::-ms-fill-lower {
+			background: #2a6495;
+			border: 0.2px solid #010101;
+			border-radius: 2.6px;
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+		}
+
+		input[type=range]::-ms-fill-upper {
+			background: #3071a9;
+			border: 0.2px solid #010101;
+			border-radius: 2.6px;
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+		}
+
+		input[type=range]::-ms-thumb {
+			box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+			border: 1px solid #000000;
+			height: 36px;
+			width: 16px;
+			border-radius: 3px;
+			background: #ffffff;
+			cursor: pointer;
+		}
+
+		input[type=range]:focus::-ms-fill-lower {
+			background: #3071a9;
+		}
+
+		input[type=range]:focus::-ms-fill-upper {
+			background: #367ebd;
+		}
+
+		.alert-danger {
+			background-color: #ff1616;
+			border-color: #551919;
+		}
+
+		.alert {
+			width: 40%;
+			text-align: center;
+		}
+	</style>
+
+</head>
+
+<body>
+	<section class="container">
+		<div class="section-content row">
+			<div class="col col-sm m-2">
+				<h4 class="p-2">Left motor status: </h4>
+				<div class="alert alert-danger" id="left-motor-status">Off</div>
+			</div>
+			<div class="col col-sm m-2">
+				<h4 class="p-2">Right motor status: </h4>
+				<div class="alert alert-danger" id="right-motor-status">Off</div>
+			</div>
+		</div>
+		<div class="section-content">
+			<div class="col cl-md" id="inputs-div">
+				<button class="btn btn-info" type="button" onmousedown="sendCommand('left', true)" , onmouseup="sendCommand('left', false)"
+				  value="L">L</button>
+				<button class="btn btn-info" type="button" onmousedown="sendCommand('right', true)" onmouseup="sendCommand('right', false)"
+				  value="R">R</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- javascrypts -->
+	<script src="/socket.js"></script>
+	<script src="/jquery.min.js"></script>
+	<script src="/main.js"></script>
+</body>
+
+</html>
