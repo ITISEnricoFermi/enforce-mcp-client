@@ -6,11 +6,15 @@
     <app-motor motor="right">
       <p slot="motor">Right motor</p>
     </app-motor>
+    <app-plotter>
+    </app-plotter>
   </div>
 </template>
 
 <script>
 import Motor from '@/components/MotorController.vue'
+import Plotter from '@/components/Plotter.vue'
+
 export default {
   name: 'Home',
   data () {
@@ -18,14 +22,12 @@ export default {
     }
   },
   components: {
-    appMotor: Motor
+    appMotor: Motor,
+    appPlotter: Plotter
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  .container {
-    margin: 10px auto;
-  }
+<style>
+
 </style>

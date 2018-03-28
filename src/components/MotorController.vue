@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="col">
     <label for="state"><slot name="motor"></slot></label>
     <p>State: {{ running ? 'ON' : 'OFF' }}</p>
-    <span><button @click="toggle"><p>Toggle</p></button></span>
-    <span><button @mousedown="on" @mouseup="off"><p>Pulse</p></button></span>
+    <button class="btn btn-info" @click="toggle">Toggle</button>
+    <button class="btn btn-info" @mousedown="on" @mouseup="off">Pulse</button>
   </div>
 </template>
 
