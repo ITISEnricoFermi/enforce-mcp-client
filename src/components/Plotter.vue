@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-secondary" @click="createCanvas">createCanvas</button>
+    <div id="myData"></div>
   </div>
 </template>
 
@@ -8,21 +8,26 @@
 export default {
   data () {
     return {
-      canvas: null,
-      ctx: null
+      plotterData: {
+        x: [],
+        y: [],
+        type: 'scatter'
+      },
+      start: null
     }
   },
   created () {
+    this.start = new Date().getTime()
   },
-  methods: {
-    createCanvas () {
-      this.canvas = document.createElement('canvas')
-      this.canvas.setAttribute('width', '800')
-      this.canvas.setAttribute('height', '600')
-      this.canvas.style.border = '1px solid #c3c3c3'
-      document.lastChild.lastChild.appendChild(this.canvas)
-      this.ctx = this.canvas.getContext('2d')
+  sockets: {
+    data (da) {
+      this.plotterData.x.push(new Date(new Date().getTime() - this.start).getTime()/1000)
+      this.plotterData.y.push(da)
+      var data = [this.plotterData]
+      // eslint-disable-next-line
+      Plotly.newPlot("myData", data)
     }
-  }
+  },
+  methods: {}
 }
 </script>
