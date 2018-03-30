@@ -21,7 +21,7 @@ export default {
   },
   sockets: {
     data (da) {
-      this.plotterData.x.push(new Date(new Date().getTime() - this.start).getTime()/1000)
+      this.plotterData.x.push(new Date(new Date().getTime() - this.start).getTime() / 1000)
       this.plotterData.y.push(da)
       var data = [this.plotterData]
       // eslint-disable-next-line
