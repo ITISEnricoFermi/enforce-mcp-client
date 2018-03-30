@@ -10,6 +10,9 @@ export default {
   sockets: {
     disconnect () {
       console.log('Connection lost.')
+    },
+    data (d) {
+      console.log(d)
     }
   }
 }
