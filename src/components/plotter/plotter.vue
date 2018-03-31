@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'plotter',
   data () {
     return {
       plotterData: {

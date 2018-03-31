@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: 'enfine',
   props: ['motor'],
   methods: {
     toggle () {
@@ -31,3 +32,13 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+button {
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.25rem;
+  border: none;
+  color: $color-white;
+  background-color: $color-button-blue;
+}
+</style>
