@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 export const SocketInstance = socketio('http://localhost:3000')
 
 Vue.use(VueSocketio, SocketInstance)
+// Vue.use(VueSocketio, SocketEnforce)
 
 /* eslint-disable no-new */
 new Vue({

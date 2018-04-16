@@ -12,8 +12,8 @@
       <div class="box module"></div>
       <div class="box module">
       </div>
-      <div class="box module line">
-        <app-plotter></app-plotter>
+      <div class="box module">
+
       </div>
 
     </section>
@@ -22,7 +22,6 @@
 
 <script>
 import Engine from '@/components/engine/engine'
-import Plotter from '@/components/plotter/plotter'
 
 export default {
   name: 'Home',
@@ -31,8 +30,7 @@ export default {
     }
   },
   components: {
-    appEngine: Engine,
-    appPlotter: Plotter
+    appEngine: Engine
   }
 }
 </script>
@@ -59,11 +57,6 @@ export default {
 
     .box {
       margin-bottom: 0vh;
-    }
-
-    .line {
-      display: table;
-      grid-area: line;
     }
   }
 }
