@@ -39,14 +39,15 @@ export default {
 
 <style scoped lang="scss">
 .camera {
-    width: 100%;
-    text-align: left;
-    box-shadow: 0 0 0.75rem rgba(0,0,0,0.5);
-    @include clearfix;
-    display: table;
-    padding: 1vh;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 0 0.75rem rgba(0,0,0,0.5);
+  @include clearfix;
+  border-radius: 0.25rem;
+  display: table;
+  padding: 1vh;
 
-    .content,
+    .controls,
     .labels {
         display: table-cell;
         vertical-align: middle;
@@ -61,16 +62,15 @@ export default {
                 float: left;
             }
 
-            .state {
-                display: block;
-                padding: 0.1rem 0.45rem;
-                border-radius: 0.25rem;
-                background-color: $color-button-red;
-                color: $color-white;
-                float: left;
-                margin-left: 0.5rem;
-
-            }
+            // .state {
+            //     display: block;
+            //     padding: 0.1rem 0.45rem;
+            //     border-radius: 0.25rem;
+            //     background-color: $color-button-red;
+            //     color: $color-white;
+            //     float: left;
+            //     margin-left: 0.5rem;
+            // }
 
             * {
                 display: inline-block;
@@ -88,24 +88,24 @@ export default {
             display: table-cell;
             vertical-align: middle;
             float: right;
-            button {
-                display: block;
-                padding: 0.8rem 0.9rem;
-                border-radius: 0.25rem;
-                border: none;
-                color: $color-white;
-                background-color: $color-button-blue;
-                cursor: pointer;
-                width: 7rem;
-
-                &:not(:last-child) {
-                    margin-bottom: 1vh;
-                }
-
-                &:hover {
-                    background-color: darken($color-button-blue, 5%);
-                }
-            }
+            // button {
+            //     display: block;
+            //     padding: 0.8rem 0.9rem;
+            //     border-radius: 0.25rem;
+            //     border: none;
+            //     color: $color-white;
+            //     background-color: $color-button-blue;
+            //     cursor: pointer;
+            //     width: 7rem;
+            //
+            //     &:not(:last-child) {
+            //         margin-bottom: 1vh;
+            //     }
+            //
+            //     &:hover {
+            //         background-color: darken($color-button-blue, 5%);
+            //     }
+            // }
         }
 
     }

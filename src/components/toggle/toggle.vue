@@ -1,8 +1,8 @@
 <template>
-  <div class="toggle u-noselect">
-    <input type="checkbox" name="check" class="check" id="check" @click="toggle">
-    <label for="check" class="label"></label>
-  </div>
+<div class="toggle u-noselect">
+  <input type="checkbox" name="check" class="check" id="check" @click="toggle">
+  <label for="check" class="label"></label>
+</div>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
         cursor: pointer;
     }
 
-    .check + .label {
+    .label {
         display: inline-block;
         position: relative;
         box-shadow: inset 0 0 0 1px #d5d5d5;
@@ -45,7 +45,7 @@ export default {
         background: $color-button-red;
     }
 
-    .check + .label:before {
+    .label::before {
         content: "";
         position: absolute;
         display: block;
@@ -60,7 +60,7 @@ export default {
         transition: 0.25s ease-in-out;
     }
 
-    .check + .label:after {
+    .label::after {
         content: "";
         position: absolute;
         display: block;
@@ -75,12 +75,12 @@ export default {
         -webkit-transition: 0.25s ease-in-out;
         transition: 0.25s ease-in-out;
     }
-    .check:checked + .label:before {
+    .check:checked + .label::before {
         width: 50px;
         background: rgba(19,191,17,1);
     }
 
-    .check:checked + .label:after {
+    .check:checked + .label::after {
         left: 20px;
         box-shadow: inset 0 0 0 1px rgba(19,191,17,1), 0 2px 4px rgba(0,0,0,.2);
     }

@@ -72,6 +72,22 @@
     background-position: 0 50%;
   }
 }
+
+// @keyframes recording {
+//   100% {
+//     background-color: transparent;
+//     transform: translate(-50%, -50%) scale(1.3);
+//   }
+// }
+
+@keyframes recording {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
 // FADE
 .fade-enter-active,
 .fade-leave-active {

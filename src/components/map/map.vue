@@ -1,6 +1,6 @@
 <template>
 <div class="map">
-  <GmapMap :center="center" :zoom="7" map-type-id="terrain">
+  <GmapMap :center="center" :zoom="zoom" map-type-id="terrain">
     <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position" />
   </GmapMap>
 </div>
@@ -14,7 +14,15 @@ export default {
       center: {
         lat: 41,
         lng: 12
-      }
+      },
+      markers: [],
+      zoom: 10
+    }
+  },
+  sockets: {
+    location (location) {
+      this.center.lat = location.latitude
+      this.center.longitude = location.longitude
     }
   }
 }

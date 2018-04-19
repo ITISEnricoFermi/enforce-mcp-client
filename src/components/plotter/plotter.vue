@@ -1,6 +1,6 @@
 <template>
 <div class="plotter">
-  <canvas class="chart" width="200" height="100" id="chart"></canvas>
+  <canvas class="chart" width="200" height="100" :id="'chart' + data"></canvas>
 </div>
 </template>
 
@@ -10,20 +10,27 @@ import {
   TimeSeries
 } from 'smoothie'
 
+import {
+  eventBus
+} from '@/main'
+
 export default {
   name: 'plotter',
+  props: ['data', 'color', 'max', 'min'],
+  data: () => {
+    return {
+      timeSerie: new TimeSeries()
+    }
+  },
   mounted () {
-    // Create a time series
-    let series = new TimeSeries()
-
     // Find the canvas
-    let canvas = document.getElementById('chart')
+    let canvas = document.getElementById('chart' + this.data)
     canvas.width = (canvas.parentNode.parentNode.offsetWidth * 2) + 'px'
     canvas.height = (canvas.parentNode.offsetHeight * 2) + 'px'
 
     // Create the chart
     let chart = new SmoothieChart({
-      millisPerPixel: 21,
+      millisPerPixel: 40,
       labels: {
         fontSize: 25
       },
@@ -32,21 +39,55 @@ export default {
       },
       tooltip: true,
       // timestampFormatter: SmoothieChart.timeFormatter,
-      responsive: true
+      responsive: true,
+      maxValue: this.max,
+      minValue: this.min
     })
-    chart.addTimeSeries(series, {
+
+    chart.streamTo(canvas, 1000)
+
+    chart.addTimeSeries(this.timeSerie, {
       strokeStyle: 'rgba(0, 255, 0, 1)',
       fillStyle: 'rgba(0, 255, 0, 0.2)',
       lineWidth: 4
     })
 
-    chart.streamTo(canvas, 500)
+    let self = this
+
+    eventBus.$on(`${this.data}`, (data) => {
+      // console.log(data)
+      console.log('Data:', data)
+      self.timeSerie.append(Date.now(), data)
+    })
+
+    // chart.addTimeSeries(this.humidityTimeSerie, {
+    //   strokeStyle: 'rgba(22, 255, 255, 1)',
+    //   fillStyle: 'rgba(22, 255, 255, 0.2)',
+    //   lineWidth: 4
+    // })
+    //
+    // chart.addTimeSeries(this.pressureTimeSerie, {
+    //   strokeStyle: 'rgba(255,68,71, 1)',
+    //   fillStyle: 'rgba(255,68,71, 0.2)',
+    //   lineWidth: 4
+    // })
 
     // Randomly add a data point every 500ms
-    setInterval(function () {
-      series.append(Date.now(), Math.random() * 10000)
-    }, 500)
+    // setInterval(function () {
+    //   temperature.append(Date.now(), Math.random() * 10000)
+    // }, 500)
   }
+  // sockets: {
+  //   temperature (temp) {
+  //     this.temperatureTimeSerie.append(Date.now(), temp)
+  //   },
+  //   humidity (humi) {
+  //     this.humidityTimeSerie.append(Date.now(), humi)
+  //   },
+  //   pressure (press) {
+  //     this.pressureTimeSerie.append(Date.now(), press)
+  //   }
+  // }
   // ready () {
   //   window.addEventListener('resize', () => {
   //     let canvas = document.getElementById('chart')

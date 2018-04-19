@@ -12,28 +12,66 @@
     <div class="box module box__map">
       <app-map></app-map>
     </div>
-    <div class="box module box__terminal">
-      <p>Ciao</p>
+    <div class="box module box__radar">
+      <app-radar></app-radar>
     </div>
-    <div class="box module box__plotter">
-      <app-plotter></app-plotter>
+    <div class="box module box__temperature">
+      <app-plotter :data="'temperature'" :max="'50'" :min="'-10'" :color="green"></app-plotter>
+    </div>
+    <div class="box module box__humidity">
+      <app-plotter :data="'humidity'" :max="'100'" :min="'0'" :color="yellow"></app-plotter>
+    </div>
+    <div class="box module box__pressure">
+      <app-plotter :data="'pressure'" :max="'1500'" :min="'-500'" :color="blue"></app-plotter>
     </div>
   </section>
 </main>
 </template>
 
 <script>
+import {
+  eventBus
+} from '@/main'
+
 import Menu from '@/components/menu/menu'
 import Engine from '@/components/engine/engine'
 import Plotter from '@/components/plotter/plotter'
 import Camera from '@/components/camera/camera'
 import Sensor from '@/components/sensor/sensor'
 import GoogleMap from '@/components/map/map'
+import Radar from '@/components/radar/radar'
 
 export default {
   name: 'Home',
-  data () {
-    return {}
+  data: () => {
+    return {
+        red: '#FF4447',
+        green: '#00FF00',
+        blue: '#3897f0',
+        yellow: '#F3A32A'
+    }
+  },
+  sockets: {
+    temperature (temp) {
+      eventBus.temperature(temp)
+      console.log('Temperature:', temp)
+    },
+    humidity (humi) {
+      eventBus.humidity(humi)
+      console.log('Humidity:', humi)
+    },
+    pressure (press) {
+      eventBus.pressure(press)
+      console.log('Pressure:', press)
+    },
+    orientation (ori) {
+      eventBus.orientation(ori)
+      console.log('Orientation:', ori)
+    },
+    position (pos) {
+      eventBus.position(pos)
+      console.log('Position:', pos)
+    }
   },
   components: {
     appMenu: Menu,
@@ -41,7 +79,8 @@ export default {
     appPlotter: Plotter,
     appCamera: Camera,
     appSensor: Sensor,
-    appMap: GoogleMap
+    appMap: GoogleMap,
+    appRadar: Radar
   }
 }
 </script>
@@ -65,7 +104,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto 1fr;
-        grid-template-areas: "controls map terminal" "line line line";
+        grid-template-areas: "controls map radar" "temperature humidity pressure";
         grid-gap: 3vh;
         padding: calc(6rem + 3vh) 3vh 3vh;
 
@@ -84,18 +123,25 @@ export default {
                 grid-area: map;
 
                 @include respond(tab-lan) {
-                  min-height: 50rem;
+                    min-height: 50rem;
                 }
 
             }
 
-            &__terminal {
-                grid-area: terminal;
-
+            &__radar {
+                grid-area: radar;
             }
 
-            &__plotter {
-                grid-area: line;
+            &__temperature {
+                grid-area: temperature;
+            }
+
+            &__humidity {
+                grid-area: humidity;
+            }
+
+            &__pressure {
+                grid-area: pressure;
             }
 
             & > * {

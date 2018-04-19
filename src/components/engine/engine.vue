@@ -55,6 +55,8 @@ export default {
 
     .labels {
         .content {
+          display: table-cell;
+          vertical-align: middle;
 
             .label {
                 float: left;

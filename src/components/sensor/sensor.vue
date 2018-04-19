@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 import Toggle from '@/components/toggle/toggle'
 
 export default {
@@ -43,6 +42,7 @@ export default {
     text-align: left;
     box-shadow: 0 0 0.75rem rgba(0,0,0,0.5);
     @include clearfix;
+    border-radius: 0.25rem;
     display: table;
     padding: 1vh;
 
