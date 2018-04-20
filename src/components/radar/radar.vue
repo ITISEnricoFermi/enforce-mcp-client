@@ -11,6 +11,12 @@ import Radar from '@/../static/js/radar.js'
 
 export default {
   name: 'radar',
+  sockets: {
+    target (target) {
+      const angle = (target.angle / Math.PI) * 360
+      Radar.setTargetData(angle, target.distance)
+    }
+  },
   mounted () {
     const p5 = new Radar(P5, 'radar', {
       targetAngle: 24,

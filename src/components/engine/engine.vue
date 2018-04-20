@@ -7,7 +7,8 @@
   </div>
   <div class="controls">
     <div class="content">
-      <app-toggle @toggle="toggle"></app-toggle>
+      <button class="state state--red" @click="toggle" v-if="running">Disattiva</button>
+      <button class="state state--green" @click="toggle" v-else>Attiva</button>
     </div>
   </div>
 </div>
@@ -78,6 +79,33 @@ export default {
             display: table-cell;
             vertical-align: middle;
             float: right;
+
+            .state {
+                display: block;
+                padding: 0.8rem 0.9rem;
+                border-radius: 0.25rem;
+                border: none;
+                color: $color-white;
+                background-color: $color-button-blue;
+                cursor: pointer;
+                width: 7rem;
+
+                &--green {
+                  background-color: $color-button-green;
+                }
+
+                &--red {
+                  background-color: $color-button-red;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 1vh;
+                }
+
+                &:hover {
+                    background-color: darken($color-button-blue, 5%);
+                }
+            }
 
         }
 

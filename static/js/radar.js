@@ -78,6 +78,11 @@ class Radar {
       this.p.canvas.parentElement.offsetHeight)
   }
 
+  setTargetData (data) {
+    this.data = data
+    this.setRange(2 * data.targetDistance)
+  }
+
   _sketch (p) {
     p.setup = () => {
       p.radar.updateSize()

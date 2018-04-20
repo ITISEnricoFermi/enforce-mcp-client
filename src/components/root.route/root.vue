@@ -22,7 +22,16 @@
       <app-plotter :data="'humidity'" :max="'100'" :min="'0'" :color="yellow"></app-plotter>
     </div>
     <div class="box module box__pressure">
-      <app-plotter :data="'pressure'" :max="'1500'" :min="'-500'" :color="blue"></app-plotter>
+      <app-plotter :data="'pressure'" :max="'1500'" :min="'500'" :color="blue"></app-plotter>
+    </div>
+    <!-- <div class="box module box__altitude">
+      <app-plotter :data="'altitude'" :max="'1100'" :min="'-100'" :color="red"></app-plotter>
+    </div>
+    <div class="box module box__speed">
+      <app-plotter :data="'speed'" :max="'100'" :min="'0'" :color="blue"></app-plotter>
+    </div> -->
+    <div class="box module box__model">
+      <app-model></app-model>
     </div>
   </section>
 </main>
@@ -40,15 +49,16 @@ import Camera from '@/components/camera/camera'
 import Sensor from '@/components/sensor/sensor'
 import GoogleMap from '@/components/map/map'
 import Radar from '@/components/radar/radar'
+import Model from '@/components/model/model'
 
 export default {
   name: 'Home',
   data: () => {
     return {
-        red: '#FF4447',
-        green: '#00FF00',
-        blue: '#3897f0',
-        yellow: '#F3A32A'
+      red: '255, 68, 71',
+      green: '0, 255, 0',
+      blue: '56, 151, 240',
+      yellow: '243, 163, 42'
     }
   },
   sockets: {
@@ -80,7 +90,8 @@ export default {
     appCamera: Camera,
     appSensor: Sensor,
     appMap: GoogleMap,
-    appRadar: Radar
+    appRadar: Radar,
+    appModel: Model
   }
 }
 </script>
@@ -103,8 +114,8 @@ export default {
     .panel {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto 1fr;
-        grid-template-areas: "controls map radar" "temperature humidity pressure";
+        grid-template-rows: auto 1fr 1fr;
+        grid-template-areas: "controls map radar" "temperature humidity pressure" "model . .";
         grid-gap: 3vh;
         padding: calc(6rem + 3vh) 3vh 3vh;
 
@@ -142,6 +153,10 @@ export default {
 
             &__pressure {
                 grid-area: pressure;
+            }
+
+            &__model {
+              grid-area: model;
             }
 
             & > * {

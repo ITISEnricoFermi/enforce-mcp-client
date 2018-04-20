@@ -7,14 +7,14 @@
   </div>
   <div class="controls">
     <div class="content">
-      <app-toggle @toggle="toggle"></app-toggle>
+      <button class="state state--red" @click="toggle" v-if="running">Disattiva</button>
+      <button class="state state--green" @click="toggle" v-else>Attiva</button>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-
 import Toggle from '@/components/toggle/toggle'
 
 export default {
@@ -39,13 +39,13 @@ export default {
 
 <style scoped lang="scss">
 .camera {
-  width: 100%;
-  text-align: left;
-  box-shadow: 0 0 0.75rem rgba(0,0,0,0.5);
-  @include clearfix;
-  border-radius: 0.25rem;
-  display: table;
-  padding: 1vh;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 0 0.75rem rgba(0,0,0,0.5);
+    @include clearfix;
+    border-radius: 0.25rem;
+    display: table;
+    padding: 1vh;
 
     .controls,
     .labels {
@@ -88,24 +88,33 @@ export default {
             display: table-cell;
             vertical-align: middle;
             float: right;
-            // button {
-            //     display: block;
-            //     padding: 0.8rem 0.9rem;
-            //     border-radius: 0.25rem;
-            //     border: none;
-            //     color: $color-white;
-            //     background-color: $color-button-blue;
-            //     cursor: pointer;
-            //     width: 7rem;
-            //
-            //     &:not(:last-child) {
-            //         margin-bottom: 1vh;
-            //     }
-            //
-            //     &:hover {
-            //         background-color: darken($color-button-blue, 5%);
-            //     }
-            // }
+
+            .state {
+                display: block;
+                padding: 0.8rem 0.9rem;
+                border-radius: 0.25rem;
+                border: none;
+                color: $color-white;
+                background-color: $color-button-blue;
+                cursor: pointer;
+                width: 7rem;
+
+                &--green {
+                    background-color: $color-button-green;
+                }
+
+                &--red {
+                    background-color: $color-button-red;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 1vh;
+                }
+
+                &:hover {
+                    background-color: darken($color-button-blue, 5%);
+                }
+            }
         }
 
     }
