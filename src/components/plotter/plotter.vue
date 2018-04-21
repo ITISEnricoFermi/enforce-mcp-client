@@ -39,9 +39,9 @@ export default {
       },
       tooltip: true,
       // timestampFormatter: SmoothieChart.timeFormatter,
-      responsive: true,
-      maxValue: this.max,
-      minValue: this.min
+      responsive: true
+      // maxValue: this.max,
+      // minValue: this.min
     })
 
     chart.streamTo(canvas, 1000)
@@ -55,55 +55,9 @@ export default {
     let self = this
 
     eventBus.$on(`${this.data}`, (data) => {
-      // console.log(data)
-      console.log('Data:', data)
       self.timeSerie.append(Date.now(), data)
     })
-
-    // chart.addTimeSeries(this.humidityTimeSerie, {
-    //   strokeStyle: 'rgba(22, 255, 255, 1)',
-    //   fillStyle: 'rgba(22, 255, 255, 0.2)',
-    //   lineWidth: 4
-    // })
-    //
-    // chart.addTimeSeries(this.pressureTimeSerie, {
-    //   strokeStyle: 'rgba(255,68,71, 1)',
-    //   fillStyle: 'rgba(255,68,71, 0.2)',
-    //   lineWidth: 4
-    // })
-
-    // Randomly add a data point every 500ms
-    // setInterval(function () {
-    //   temperature.append(Date.now(), Math.random() * 10000)
-    // }, 500)
   }
-  // sockets: {
-  //   temperature (temp) {
-  //     this.temperatureTimeSerie.append(Date.now(), temp)
-  //   },
-  //   humidity (humi) {
-  //     this.humidityTimeSerie.append(Date.now(), humi)
-  //   },
-  //   pressure (press) {
-  //     this.pressureTimeSerie.append(Date.now(), press)
-  //   }
-  // }
-  // ready () {
-  //   window.addEventListener('resize', () => {
-  //     let canvas = document.getElementById('chart')
-  //
-  //     canvas.style.width = canvas.parentNode.offsetWidth + 'px'
-  //     canvas.style.height = canvas.parentNode.offsetHeight + 'px'
-  //   })
-  // },
-  // beforeDestroy () {
-  //   window.removeEventListener('resize', () => {
-  //     let canvas = document.getElementById('chart')
-  //
-  //     canvas.style.width = canvas.parentNode.offsetWidth + 'px'
-  //     canvas.style.height = canvas.parentNode.offsetHeight + 'px'
-  //   })
-  // }
 }
 </script>
 

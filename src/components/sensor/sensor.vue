@@ -26,6 +26,9 @@ export default {
       running: false
     }
   },
+  status (status) {
+    console.log(status)
+  },
   methods: {
     toggle () {
       this.running = !this.running

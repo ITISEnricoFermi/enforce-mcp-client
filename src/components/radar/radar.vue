@@ -7,24 +7,32 @@
 
 // import sketch from '@/../static/js/sketch.js'
 import * as P5 from 'p5'
-import Radar from '@/../static/js/radar.js'
+import Radar from '@/../static/js/radar-p5/radar.js'
 
 export default {
   name: 'radar',
+  data: () => {
+    return {
+      p5: 'ciao'
+    }
+  },
   sockets: {
     target (target) {
+      target = JSON.parse(target)
       const angle = (target.angle / Math.PI) * 360
-      Radar.setTargetData(angle, target.distance)
+      this.p5.setTargetData(angle, target)
+      console.log(target)
+      console.log(this.p5.data)
     }
   },
   mounted () {
-    const p5 = new Radar(P5, 'radar', {
+    this.p5 = new Radar(P5, 'radar', {
       targetAngle: 24,
       targetDistance: 56
     })
 
     window.addEventListener('resize', () => {
-      p5.updateSize()
+      this.p5.updateSize()
     })
   }
 }

@@ -24,12 +24,6 @@
     <div class="box module box__pressure">
       <app-plotter :data="'pressure'" :max="'1500'" :min="'500'" :color="blue"></app-plotter>
     </div>
-    <!-- <div class="box module box__altitude">
-      <app-plotter :data="'altitude'" :max="'1100'" :min="'-100'" :color="red"></app-plotter>
-    </div>
-    <div class="box module box__speed">
-      <app-plotter :data="'speed'" :max="'100'" :min="'0'" :color="blue"></app-plotter>
-    </div> -->
     <div class="box module box__model">
       <app-model></app-model>
     </div>
@@ -61,26 +55,24 @@ export default {
       yellow: '243, 163, 42'
     }
   },
+  created () {
+    this.$socket.emit('status')
+  },
   sockets: {
     temperature (temp) {
       eventBus.temperature(temp)
-      console.log('Temperature:', temp)
     },
     humidity (humi) {
       eventBus.humidity(humi)
-      console.log('Humidity:', humi)
     },
     pressure (press) {
       eventBus.pressure(press)
-      console.log('Pressure:', press)
     },
     orientation (ori) {
       eventBus.orientation(ori)
-      console.log('Orientation:', ori)
     },
     position (pos) {
       eventBus.position(pos)
-      console.log('Position:', pos)
     }
   },
   components: {

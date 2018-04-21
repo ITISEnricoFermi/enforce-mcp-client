@@ -1,7 +1,7 @@
 <template>
 <div class="map">
-  <GmapMap :center="center" :zoom="zoom" map-type-id="satellite">
-    <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position"  @rightclick="mapRclicked"/>
+  <GmapMap :center="center" :zoom="zoom" map-type-id="satellite" @rightclick="mapRclicked">
+    <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position"/>
   </GmapMap>
 </div>
 </template>
@@ -12,34 +12,30 @@ export default {
   data: () => {
     return {
       center: {
-        lat: 41,
-        lng: 12
+        lat: 44.647180,
+        lng: 10.935057
       },
       markers: [],
-      zoom: 10,
-      lastId: 1
-    }
-  },
-  sockets: {
-    location (location) {
-      this.center.lat = location.latitude
-      this.center.longitude = location.longitude
+      zoom: 16
     }
   },
   methods: {
     mapRclicked (mouseArgs) {
-      console.log('Ciao')
-      const createdMarker = this.addMarker()
-      createdMarker.position.lat = mouseArgs.latLng.lat()
-      createdMarker.position.lng = mouseArgs.latLng.lng()
+      this.markers = []
+      const createdMarker = this.addMarker(mouseArgs.latLng.lat(), mouseArgs.latLng.lng())
+      this.$socket.emit('xy', {
+        latitude: createdMarker.position.lat,
+        longitude: createdMarker.position.lng
+      })
+      console.log(createdMarker.position)
     },
-    addMarker: function () {
+    addMarker: function addMarker (latitude, longitude) {
       this.lastId++
       this.markers.push({
         id: this.lastId,
         position: {
-          lat: 48.8538302,
-          lng: 2.2982161
+          lat: latitude,
+          lng: longitude
         },
         opacity: 1,
         draggable: true,
@@ -50,8 +46,14 @@ export default {
         ifw: true,
         ifw2text: 'This text is bad please change me :( '
       })
-      console.log(this.markers)
       return this.markers[this.markers.length - 1]
+    }
+  },
+  sockets: {
+    location (location) {
+      location = JSON.parse(location)
+      this.center.lat = location.latitude
+      this.center.longitude = location.longitude
     }
   }
 }

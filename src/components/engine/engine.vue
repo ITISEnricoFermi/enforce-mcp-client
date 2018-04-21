@@ -19,17 +19,35 @@
 import Toggle from '@/components/toggle/toggle'
 
 export default {
-  name: 'enfine',
+  name: 'engine',
   props: ['motor'],
   data () {
     return {
       running: false
     }
   },
+  sockets: {
+    status (status) {
+      console.log(status)
+    }
+  },
   methods: {
     toggle () {
-      this.running = !this.running
-      this.$socket.emit(this.motor, this.running)
+      if (this.motor === 'Motore destro') {
+        if (this.running) {
+          this.running = !this.running
+          return this.$socket.emit('mr0')
+        }
+        this.running = !this.running
+        return this.$socket.emit('mr1')
+      } else if (this.motor === 'Motore sinistro') {
+        if (this.running) {
+          this.running = !this.running
+          return this.$socket.emit('ml0')
+        }
+        this.running = !this.running
+        return this.$socket.emit('ml1')
+      }
     }
   },
   components: {
