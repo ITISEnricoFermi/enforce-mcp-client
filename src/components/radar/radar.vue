@@ -19,8 +19,8 @@ export default {
   sockets: {
     target (target) {
       target = JSON.parse(target)
-      const angle = (target.angle / Math.PI) * 360
-      this.p5.setTargetData(angle, target)
+      // const angle = (target.directionD / Math.PI) * 360
+      this.p5.setTargetData(target.directionD, target.distance)
       console.log(target)
       console.log(this.p5.data)
     }

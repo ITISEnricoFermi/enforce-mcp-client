@@ -27,8 +27,12 @@ export default {
   },
   methods: {
     toggle () {
+      if (this.running) {
+        this.running = !this.running
+        return this.$socket.emit('c0')
+      }
       this.running = !this.running
-      this.$socket.emit(this.camera, this.running)
+      return this.$socket.emit('c1')
     }
   },
   components: {
