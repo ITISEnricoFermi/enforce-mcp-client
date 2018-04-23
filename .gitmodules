@@ -1,0 +1,3 @@
+[submodule "static/js/radar-p5"]
+	path = static/js/radar-p5
+	url = http://git.riccardosangiorgio.com/Revanee/radar-p5.git
