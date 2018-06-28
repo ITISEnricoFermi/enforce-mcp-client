@@ -8,30 +8,30 @@
   <div class="menu__bottom">
     <div class="create">
       <div class="content">
-        <input type="text" class="title" placeholder="Titolo" v-model="title">
+        <input type="text" class="title" placeholder="Title" v-model="title">
         <button class="record" :disabled="!title" @click="stop" v-if="recording">
           <span><i class="fas fa-circle-notch"></i></span>
-          <span>Cattura</span>
+          <span>Record</span>
         </button>
         <button class="record" :disabled="!title" @click="record" v-else>
           <span><i class="fas fa-circle"></i></span>
-          <span>Cattura</span>
+          <span>Record</span>
         </button>
       </div>
     </div>
     <div class="read">
       <div class="content">
         <select class="select" v-model="mission">
-          <option value="undefined" disabled>Missione</option>
+          <option value="undefined" disabled>Mission</option>
           <option v-for="(m, index) in missions" :key="index" value="index">{{ m.title }}</option>
         </select>
         <button class="play" :disabled="!mission" @click="pause" v-if="playing">
           <span><i class="fas fa-pause"></i></span>
-          <span>Riproduci</span>
+          <span>Play</span>
         </button>
         <button class="play" :disabled="!mission" @click="play" v-else>
           <span><i class="fas fa-play"></i></span>
-          <span>Riproduci</span>
+          <span>Play</span>
         </button>
       </div>
     </div>
