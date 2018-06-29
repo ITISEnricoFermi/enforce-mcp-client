@@ -7,8 +7,8 @@
   </div>
   <div class="controls">
     <div class="content">
-      <button class="state state--red" @click="toggle" v-if="running">Disattiva</button>
-      <button class="state state--green" @click="toggle" v-else>Attiva</button>
+      <button class="state state--red" @click="toggle" v-if="running">Turn off</button>
+      <button class="state state--green" @click="toggle" v-else>Turn on</button>
     </div>
   </div>
 </div>

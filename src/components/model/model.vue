@@ -16,13 +16,18 @@ import * as THREE from 'three'
 export default {
   mounted () {
     const model = new ModelViewer(THREE, 'model')
-    console.log(model)
 
     window.addEventListener('resize', () => {
       model.updateSize()
     })
 
     eventBus.$on('orientation', (orientation) => {
+      // try {
+      //   orientation = JSON.parse(JSON.parse(orientation))
+      //   console.log(orientation)
+      // } catch (e) {
+      //
+      // }
       model.setRotation(JSON.parse(orientation))
     })
   }

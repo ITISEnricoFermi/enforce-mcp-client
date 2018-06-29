@@ -3,8 +3,8 @@
   <app-menu></app-menu>
   <section class="panel">
     <div class="box module box__controls">
-      <app-engine :motor="'Motore sinistro'"></app-engine>
-      <app-engine :motor="'Motore destro'"></app-engine>
+      <app-engines :motor="'Motore sinistro'"></app-engines>
+      <!-- <app-engine :motor="'Motore destro'"></app-engine> -->
       <app-camera :camera="'Camera'"></app-camera>
       <app-sensor :sensor="'BME280'"></app-sensor>
       <app-sensor :sensor="'BNO055'"></app-sensor>
@@ -16,7 +16,7 @@
       <app-radar></app-radar>
     </div>
     <div class="box module box__temperature">
-      <app-plotter :data="'temperature'" :max="'50'" :min="'-10'" :color="green"></app-plotter>
+      <app-plotter :data="'temperature'" :max="'90'" :min="'0'" :color="green"></app-plotter>
     </div>
     <div class="box module box__humidity">
       <app-plotter :data="'humidity'" :max="'100'" :min="'0'" :color="yellow"></app-plotter>
@@ -37,7 +37,7 @@ import {
 } from '@/main'
 
 import Menu from '@/components/menu/menu'
-import Engine from '@/components/engine/engine'
+import Engines from '@/components/engines/engines'
 import Plotter from '@/components/plotter/plotter'
 import Camera from '@/components/camera/camera'
 import Sensor from '@/components/sensor/sensor'
@@ -77,7 +77,7 @@ export default {
   },
   components: {
     appMenu: Menu,
-    appEngine: Engine,
+    appEngines: Engines,
     appPlotter: Plotter,
     appCamera: Camera,
     appSensor: Sensor,

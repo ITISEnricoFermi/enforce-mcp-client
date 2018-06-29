@@ -2,7 +2,7 @@
 <div class="engine">
   <div class="labels">
     <div class="content">
-      <p class="label">{{ motor }}</p>
+      <p class="label">Engines</p>
     </div>
   </div>
   <div class="controls">
@@ -11,8 +11,8 @@
       <button class="direction" @click="right" :disabled="!autopilot"><i class="fas fa-arrow-right"></i></button>
       <button class="auto auto--red" @click="auto" v-if="autopilot"><i class="fas fa-user"></i></button>
       <button class="auto auto--green" @click="auto" v-else><i class="fas fa-user"></i></button>
-      <button class="state state--red" @click="toggle" v-if="running">Disattiva</button>
-      <button class="state state--green" @click="toggle" v-else>Attiva</button>
+      <button class="state state--red" @click="toggle" v-if="running">Turn off</button>
+      <button class="state state--green" @click="toggle" v-else>Turn on</button>
     </div>
   </div>
 </div>
@@ -23,8 +23,7 @@
 import Toggle from '@/components/toggle/toggle'
 
 export default {
-  name: 'engine',
-  props: ['motor'],
+  name: 'engines',
   data () {
     return {
       running: false,
@@ -33,12 +32,12 @@ export default {
   },
   sockets: {
     status (status) {
-      if (this.motor === 'Motore destro') {
-        this.running = status.rightMotor
-      } else {
-        this.running = status.leftMotor
-      }
-      this.autopilot = status.autopilot
+      // if (this.motor === 'Motore destro') {
+      //   this.running = status.rightMotor
+      // } else {
+      //   this.running = status.leftMotor
+      // }
+      // this.autopilot = status.autopilot
     }
   },
   methods: {
@@ -57,21 +56,21 @@ export default {
       return this.$socket.emit('ml1')
     },
     toggle () {
-      if (this.motor === 'Motore destro') {
-        if (this.running) {
-          this.running = !this.running
-          return this.$socket.emit('mr0')
-        }
-        this.running = !this.running
-        return this.$socket.emit('mr1')
-      } else if (this.motor === 'Motore sinistro') {
-        if (this.running) {
-          this.running = !this.running
-          return this.$socket.emit('ml0')
-        }
-        this.running = !this.running
-        return this.$socket.emit('ml1')
-      }
+      // if (this.motor === 'Motore destro') {
+      //   if (this.running) {
+      //     this.running = !this.running
+      //     return this.$socket.emit('mr0')
+      //   }
+      //   this.running = !this.running
+      //   return this.$socket.emit('mr1')
+      // } else if (this.motor === 'Motore sinistro') {
+      //   if (this.running) {
+      //     this.running = !this.running
+      //     return this.$socket.emit('ml0')
+      //   }
+      //   this.running = !this.running
+      //   return this.$socket.emit('ml1')
+      // }
     }
   },
   components: {

@@ -2,7 +2,7 @@
 <header class="menu">
   <div class="menu__top">
     <div class="logo">
-      <p class="label">E</p>
+      <img src="/static/logo/enforce.svg" alt="Logo Enforce Team">
     </div>
   </div>
   <div class="menu__bottom">
@@ -104,6 +104,7 @@ export default {
     width: 100%;
     position: fixed;
     background-color: $color-tertiary;
+    // background-image: linear-gradient($color-grey-1, #282828);
     @include clearfix;
     z-index: 10000;
 
@@ -114,7 +115,6 @@ export default {
     }
 
     &__top {
-        background-color: green;
         float: left;
 
         @include respond(tab-lan) {
@@ -123,15 +123,12 @@ export default {
 
         .logo {
             height: 6rem;
-            width: 6rem;
-            background-color: lighten($color-tertiary, 10%);
+            // background-color: lighten($color-tertiary, 10%);
             float: left;
 
-            .label {
-                font-family: 'Bitter', sans-serif;
-                color: $color-white;
-                font-size: 5rem;
-                display: block;
+            img {
+              height: 4rem;
+              margin: 1rem;
             }
         }
     }

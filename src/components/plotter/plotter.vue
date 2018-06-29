@@ -32,16 +32,17 @@ export default {
     let chart = new SmoothieChart({
       millisPerPixel: 40,
       labels: {
-        fontSize: 25
+        fontSize: 16
       },
       grid: {
-        borderVisible: false
+        borderVisible: false,
+        fillStyle: '#282828'
       },
       tooltip: true,
       // timestampFormatter: SmoothieChart.timeFormatter,
-      responsive: true
-      // maxValue: this.max,
-      // minValue: this.min
+      responsive: true,
+      maxValue: this.max,
+      minValue: this.min
     })
 
     chart.streamTo(canvas, 1000)
@@ -64,7 +65,7 @@ export default {
 <style scoped lang="scss">
 .plotter {
     width: 100%;
-    background-color: $color-black;
+    background-color: $color-grey-2;
     height: 20rem;
     border-radius: 0.25rem;
     overflow: hidden;
@@ -72,8 +73,8 @@ export default {
 
     .chart {
         padding: 0;
-        width: 200%;
-        height: 200%;
+        width: 100%;
+        height: 100%;
     }
 
 }
