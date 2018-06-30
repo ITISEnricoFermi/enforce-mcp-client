@@ -16,7 +16,7 @@
       <app-radar></app-radar>
     </div>
     <div class="box module box__temperature">
-      <app-plotter :data="'temperature'" :max="'90'" :min="'0'" :color="green"></app-plotter>
+      <app-plotter :data="'temperature'" :max="'100'" :min="'0'" :color="green"></app-plotter>
     </div>
     <div class="box module box__humidity">
       <app-plotter :data="'humidity'" :max="'100'" :min="'0'" :color="yellow"></app-plotter>
