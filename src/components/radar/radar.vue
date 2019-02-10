@@ -7,7 +7,7 @@
 
 // import sketch from '@/../static/js/sketch.js'
 import * as P5 from 'p5'
-import Radar from '@/../static/js/radar-p5/radar.js'
+import Radar from '@/../public/js/radar-p5/radar.js'
 
 export default {
   name: 'radar',

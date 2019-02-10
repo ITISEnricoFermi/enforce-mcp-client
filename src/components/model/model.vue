@@ -10,7 +10,7 @@ import {
   eventBus
 } from '@/main'
 
-import ModelViewer from '@/../static/js/model.js'
+import ModelViewer from '@/../public/js/model.js'
 import * as THREE from 'three'
 
 export default {
