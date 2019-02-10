@@ -20,7 +20,7 @@
 
 <script>
 
-import Toggle from '@/components/toggle/toggle'
+// import Toggle from '@/components/toggle/toggle'
 
 export default {
   name: 'engines',
@@ -74,7 +74,7 @@ export default {
     }
   },
   components: {
-    appToggle: Toggle
+    // appToggle: Toggle
   }
 }
 </script>

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Toggle from '@/components/toggle/toggle'
+// import Toggle from '@/components/toggle/toggle'
 
 export default {
   name: 'camera',
@@ -36,7 +36,7 @@ export default {
     }
   },
   components: {
-    appToggle: Toggle
+    // appToggle: Toggle
   }
 }
 </script>
