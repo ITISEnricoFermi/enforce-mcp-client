@@ -6,8 +6,7 @@
 <script>
 
 // import sketch from '@/../static/js/sketch.js'
-import * as P5 from 'p5'
-import Radar from '@/../public/js/radar-p5/radar.js'
+import Radar from 'radar-p5'
 
 export default {
   name: 'radar',
@@ -26,7 +25,7 @@ export default {
     }
   },
   mounted () {
-    this.p5 = new Radar(P5, 'radar', {
+    this.p5 = new Radar('radar', {
       targetAngle: 24,
       targetDistance: 56
     })
